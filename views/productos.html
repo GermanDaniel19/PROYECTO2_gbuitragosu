@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Productos</h1>
+    <table border="4" style="text-align: center;">
+    <tr></tr>
+        <td style="width: 3%;">id  </td>
+        <td style="width: 8%;">nombre  </td>
+        <td style="width: 5%;">precio  </td>
+        <td style="width: 5%;">volumen_oz </td>
+        <td style="width: 5%;">tipo_vaso </td>
+        <td style="width: 5%;">is_copa </td>
+    <tr></tr>
+        {% for producto in productos%}
+        <p>
+            <td>{{producto.id_producto}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.volumen_oz}}</td>
+            <td>{{producto.tipo_vaso}}</td>
+            <td>{{producto.is_copa}}</td>
+            <tr></tr>
+        </p>
+        {%endfor%}
+    </table>
+
+    <h1>Vender</h1>
+    <table border="4" style="text-align: center;">
+        <tr></tr>
+        <td style="width: 10%;">ID Producto a vender</td>
+        <td style="width: 10%;"></td>
+        <tr></tr>
+        <form action="/producto/" method="post">
+            <td style="width: 10%;"><input type="id" name="input_id_venta"></td>
+            <td style="width: 10%;"><button type="submit" >Vender</button></td>
+        </form>
+        <tr></tr>
+
+    </table>
+
+    <h1>Ventas del dia</h1>
+    <table border="4" style="text-align: center;">
+        <tr></tr>
+        <td style="width: 10%;">Ventas del dia</td>
+        <td style="width: 10%;"></td>
+        <tr></tr>
+        <td style="width: 10%;"><label for="000">000.00</label>
+        <td style="width: 10%;"><button>Refrescar</button></td>
+        <tr></tr>
+
+    </table>
+
+    <h1>Producto mas rentable</h1>
+    <table border="4" style="text-align: center;">
+        <tr></tr>
+        <td style="width: 10%;">Producto mas rentable</td>
+        <td style="width: 10%;"></td>
+        <tr></tr>
+        <td style="width: 10%;"><label for="000">000.00</label> 
+        <td style="width: 10%;"><button>Refrescar</button></td>
+        <tr></tr>
+
+    </table>
+
+    
+</body>
+</html>
