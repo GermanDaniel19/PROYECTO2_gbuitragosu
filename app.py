@@ -2,6 +2,7 @@ from flask import Flask, Blueprint,render_template, request
 from db import db, init_db
 from models.ingrediente import Ingrediente
 from models.producto import Producto
+from models.heladeria import Heladeria
 from controllers.ingrediente_controller import ingrediente_bp
 from controllers.producto_controller import producto_bp
 # from models.heladeria import Heladeria
@@ -21,6 +22,9 @@ global heladeria_mia
 def index():
     # ingrediente1 = Ingrediente(nombre = "chupiplum",contador = 10.0, calorias = 213, precio = 15.2, vegetariano = 1, sabor = None, is_complemento = True)
     # producto1 = Producto(nombre = "producto 1", precio = 2.50, volumen_oz = 10, tipo_vaso = None, is_copa = False )
+
+    heladeria = Heladeria(nombre = "Heladeria German" ,producto_mas_rentable = "", venta_dia = 0.0)
+    db.session.add(heladeria)
 
     helado_de_fresa = Ingrediente(nombre = "Helado de Fresa",contador = 10.0, calorias = 150, precio = 1200.0, vegetariano = False, sabor = "Fresa", is_complemento = False)
     helado_de_mandarina = Ingrediente( nombre = "Helado de mandarina",contador = 10.0, calorias = 100, precio = 1100.0, vegetariano = False, sabor = "Mandarina", is_complemento = False)

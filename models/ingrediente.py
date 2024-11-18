@@ -41,7 +41,7 @@ class Ingrediente(db.Model):
         if isinstance(ingrediente_consultar,Ingrediente):
             ingrediente_consultar.contador = 0.0
             # db.session.commit()
-            resultado = "Producto actualizado exitosamente"
+            resultado = f"Ingrediente {ingrediente_consultar.nombre} actualizado exitosamente"
 
         return resultado
 

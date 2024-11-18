@@ -19,7 +19,7 @@ def index():
             resultado: str = ingrediente_consultar.es_sano(int(request.form["id_ingrediente"]))
             flash(resultado)
     
-            return render_template("ingredientes.html", ingredientes = ingredientes)
+            # return render_template("ingredientes.html", ingredientes = ingredientes)
 
         #Bajar complemento a 0
         elif int(request.form["opcion"]) == 3:
@@ -32,7 +32,7 @@ def index():
             db.session.commit()
             flash(resultado)
 
-            return render_template("ingredientes.html", ingredientes = ingredientes)
+            # return render_template("ingredientes.html", ingredientes = ingredientes)
         
         #Reabastecer
         elif int(request.form["opcion"]) == 2:
@@ -42,23 +42,12 @@ def index():
             resultado: str = ingrediente_consultar\
                 .reabastecer(int(request.form["id_ingrediente"]))
             
-            # ingrediente_actualizar = Ingrediente.query\
-            #     .filter_by(id = request.form["id_ingrediente"] )\
-            #     .first()
-            
-            # if isinstance(ingrediente_actualizar,Ingrediente):
-
-            #     if ingrediente_actualizar.is_complemento == True:
-            #         ingrediente_actualizar.contador += 10
-            #     else: 
-            #         ingrediente_actualizar.contador += 5
-
             flash(resultado)
             db.session.commit()                
             
-            return render_template("ingredientes.html",ingredientes = ingredientes)
+        #     return render_template("ingredientes.html",ingredientes = ingredientes)
         
-        else: 
-            return render_template("ingredientes.html",ingredientes = ingredientes)
+        # else: 
+        return render_template("ingredientes.html",ingredientes = ingredientes)
 
             
