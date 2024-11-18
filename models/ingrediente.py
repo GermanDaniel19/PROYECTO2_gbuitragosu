@@ -12,7 +12,54 @@ class Ingrediente(db.Model):
     is_complemento = db.Column(db.Boolean, nullable = True)
     
 
-    def modificar_inventario(self,value):
-        self.contador += value
+    def es_sano(self,id_ingrediente) -> str:
+        ingrediente_consultar = Ingrediente.query\
+            .filter_by(id = id_ingrediente)\
+            .first()
+        
+        resultado: str = "no se encuentra el ingrediente"
+        
+        if isinstance(ingrediente_consultar,Ingrediente):
+                if ingrediente_consultar.calorias < 100 \
+                    or ingrediente_consultar.vegetariano == True:
 
+                    resultado = (f"Ingrediente {ingrediente_consultar.nombre} es SANO !!!")
+                
+                else: 
+                    resultado = (f"Ingrediente {ingrediente_consultar.nombre} NO es sano")
+            
+        return resultado
 
+    def bajar_complemento(self,id_ingrediente: int) -> str:
+
+        ingrediente_consultar = Ingrediente.query\
+            .filter_by(id = id_ingrediente, is_complemento = True )\
+                .first()
+        
+        resultado: str = "Producto no existe o no es complemento"
+
+        if isinstance(ingrediente_consultar,Ingrediente):
+            ingrediente_consultar.contador = 0.0
+            # db.session.commit()
+            resultado = "Producto actualizado exitosamente"
+
+        return resultado
+
+    def reabastecer(self, id_ingrediente: int) -> str:
+
+        ingrediente_consultar = Ingrediente.query\
+            .filter_by(id = id_ingrediente)\
+            .first()
+        
+        resultado: str = "Producto no existe"
+
+        if isinstance(ingrediente_consultar, Ingrediente):
+             
+            if ingrediente_consultar.is_complemento == True:
+                ingrediente_consultar.contador +=10
+            else:
+                ingrediente_consultar.contador +=5
+
+            resultado = f"Ingrediente {ingrediente_consultar.nombre} actualizado con exito"
+        
+        return resultado
