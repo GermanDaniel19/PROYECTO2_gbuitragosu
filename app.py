@@ -16,7 +16,7 @@ app.secret_key = 'mi_clave_secreta'
 
 db.init_app(app)
 init_db(app) ### Es el comando que crea los objetos
-global heladeria_mia 
+
 
 @app.route("/")
 def index():

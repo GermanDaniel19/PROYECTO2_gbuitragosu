@@ -22,6 +22,7 @@ class Producto(db.Model):
 
         if isinstance(producto_venta, Producto) == True:
 
+
             for ingrediente in producto_venta.ingredientes:
                 if ingrediente.is_complemento == False and ingrediente.contador >= 0.2:
                     con_inventario = True
@@ -29,6 +30,7 @@ class Producto(db.Model):
                     con_inventario = True
                 else:
                     con_inventario = False
+                    raise ValueError(f"{ingrediente.nombre}")
                     break
 
             if con_inventario == True:

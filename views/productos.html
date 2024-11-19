@@ -15,6 +15,8 @@
             </ul>
         {% endif %}
     {% endwith %}
+        <a href="http://127.0.0.1:5000/"><button><h2>Inicio</h2></button></a>
+        <a href="http://127.0.0.1:5000/ingredientes/"><button><h2>Ingredientes</h2></button></a>
     <table border="6" style="text-align: center;" title="10General">
         <h1> </h1>
         <form action="/producto/" method="post">
@@ -61,19 +63,6 @@
             <td style="width: 10%;"><input type="id" name="id_producto"></td>
             <td style="width: 10%;"><button type="submit" >Vender</button></td>
         </form>
-        <tr></tr>
-
-    </table>
-
-    <h1>Ventas del dia</h1>
-    <table border="4" style="text-align: center;">
-        <tr></tr>
-        <td style="width: 10%;">Ventas del dia</td>
-        <td style="width: 10%;"></td>
-        <tr></tr>
-            <input type="hidden" name="opcion" value="2">
-            <td style="width: 10%;"><label for="000">{{venta_dia}}</label>
-        <td style="width: 10%;"><button type="submit">Refrescar</button></td>
         <tr></tr>
 
     </table>

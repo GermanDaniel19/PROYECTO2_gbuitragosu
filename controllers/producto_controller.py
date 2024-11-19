@@ -24,9 +24,14 @@ def index():
     else:
         if int(request.form["opcion"]) == 1:
             producto_operar = Producto()
-            resultado: str = producto_operar.vender(int(request.form["id_producto"]))
-            flash(resultado)
-            db.session.commit()
+            try:
+                resultado: str = producto_operar.vender(int(request.form["id_producto"]))
+                flash(resultado)
+                db.session.commit()
+            except Exception as e:
+                flash("¡¡ Oh No !! nos hemos quedado sin {e}")
+                
+            # flash(resultado)
 
         if int(request.form["opcion"]) == 2:
             producto_operar = Producto()
